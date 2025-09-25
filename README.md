@@ -26,9 +26,11 @@ code .
 ```
 - Click blue >< button in lower lefthand corner
 - Click "Reopen in devcontainer"
-- 
+- [If prompted] select modular_ins/.devcontainer/devcontainer.json as container settings file
 ```bash
 cd catkin_ws
+```
 colcon build
+```
 . install/setup.bash
 ```
