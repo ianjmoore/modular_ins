@@ -13,10 +13,27 @@ modular_ins/microstrain_inertial_driver:
     reconnect_attempts : 0
     configure_after_reconnect : True
 
-    # Controls if the driver-defined setup is sent to the device
-    #     false - The driver will ignore the settings below and use the device's current settings
-    #     true  - Overwrite the current device settings with those listed below
-    device_setup : True
+    # Controls if the driver creates a raw binary file
+    #     false - Do not create the file
+    #     true  - Create the file
+    #
+    # Note: The filename will have the following format -
+    #       model_number "_" serial_number "_" datetime (year_month_day_hour_minute_sec) ".bin"
+    #           example: "3DM-GX5-45_6251.00001_20_12_01_01_01_01.bin"
+    # Note: This file is useful for getting support from the manufacturer
+    raw_file_enable : False
+
+    # (GQ7/CV7 only) Controls if the driver requests additional factory support data to be included in the raw data file
+    #     false - Do not request the additional data
+    #     true  - Request the additional channels (please see notes below!)
+    #
+    # Note: We recommend only enabling this feature when specifically requested by Microstrain.
+    #       Including this feature increases communication bandwidth requirements significantly...
+    #       for serial data connections please ensure the baudrate is sufficient for the added data channels.     
+    raw_file_include_support_data : False
+
+    # The directory to store the raw data file
+    raw_file_directory : "/home/your_name"
 
     # Disable the transform from the mount to frame id transform as it should be handled from a URDF file and robot_description
     publish_mount_to_frame_id_transform : False
@@ -78,8 +95,17 @@ modular_ins/microstrain_inertial_driver:
         #  4 - Generated from system oscillator
     filter_pps_source : 4
 
-    # Disable the filter declination source. This is required to get the node to start, and isn't doing anything special
+    # (All, except -10, and -15 products) Declination Source 1 = None, 2 = magnetic model, 3 = manual 
+    # Note: When using a CV7, this MUST be changed to either 1, or 3 or the node will not start
+    # Setting to manual as WMM omitted on FW 1.2.05. Adding in 1.2.05
     filter_declination_source : 1
+
+    # External GPS Time Update Control
+    # Note: filter_external_gps_time_topic should publish at no more than 1 Hz.
+    # Note: gps_leap_seconds should be updated to reflect the current number of leap seconds.
+    filter_enable_external_gps_time_update : False
+    filter_external_gps_time_topic         : "/external_gps_time"
+    gps_leap_seconds                       : 18.0
 
     # For this use case, we will not publish any IMU data
     imu_data_rate : 0
@@ -243,7 +269,7 @@ modular_ins/septentrio_gnss:
       auto_publish: false
       publish_only_valid: false
       navsatfix: true
-      gpsfix: true
+      gpsfix: false
       gpgga: false
       gprmc: false
       gpst: false

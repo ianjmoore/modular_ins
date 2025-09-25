@@ -17,3 +17,18 @@ Implementation of an externally aided tactical grade INS with Dual-Antenna GNSS 
 - [microstrain_inertial](https://github.com/LORD-MicroStrain/microstrain_inertial/tree/ros2) ROS 2 driver
 - [septentrio_gnss_driver](https://github.com/septentrio-gnss/septentrio_gnss_driver) ROS 2 driver
 - [ntrip_client](https://github.com/LORD-MicroStrain/ntrip_client/tree/ros2) ROS 2 driver
+## Install Instructions
+## Docker Development
+
+- Open terminal 
+```bash
+code .
+```
+- Click blue >< button in lower lefthand corner
+- Click "Reopen in devcontainer"
+- 
+```bash
+cd catkin_ws
+colcon build
+. install/setup.bash
+```

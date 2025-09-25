@@ -13,9 +13,8 @@ _PACKAGE_NAME = 'modular_ins'
 _MICROSTRAIN_LAUNCH_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('microstrain_inertial_driver'), 'launch', 'microstrain_launch.py')
 _CV7_INS_PARAMS_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'mosaic_h_cv7_ins_ext_heading.yml')
 _RVIZ_DISPLAY_FILE = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config', 'display.rviz')
-
 _CONFIG_DIRECTORY = os.path.join(ament_index_python.packages.get_package_share_directory('modular_ins'), 'config')
-_SEPT_CONFIG_FILE = os.path.join(_CONFIG_DIRECTORY, 'mosaic_h_cv7_ins_ext_heading.yml') #TODO check if needed
+_SEPT_CONFIG_FILE = os.path.join(_CONFIG_DIRECTORY, 'mosaic_h_cv7_ins_ext_heading.yml') 
 
 def generate_launch_description():
   print(f"sept params: {_SEPT_CONFIG_FILE}")
