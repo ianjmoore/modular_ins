@@ -18,10 +18,8 @@ ROS 2 interface example for an externally aided tactical grade INS with Dual-Ant
 - 2x L1/L2 or Full Band GNSS Antennas
 - [SensorCloudRTK](https://rtkapp.sensorcloud.com/) API
 
-#### Compute:
-- Linux machine running Ubuntu 22.04 or later
-
 ### Software:
+- Ubuntu 22.04 or later
 - [microstrain_inertial](https://github.com/LORD-MicroStrain/microstrain_inertial/tree/ros2) ROS 2 driver
 - [septentrio_gnss_driver](https://github.com/septentrio-gnss/septentrio_gnss_driver) ROS 2 driver
 - [ntrip_client](https://github.com/LORD-MicroStrain/ntrip_client/tree/ros2) ROS 2 driver
@@ -47,7 +45,7 @@ source ~/your_workspace/install/setup.bash
 ## Run Instructions
 
 #### Launch files
-Two launch files are provided for recommended use for specific applications: 
+Two launch files are provided for distinct applications: 
 
 1. **Dual Antenna** (GPS compass) Heading with Mosaic H to CV7-INS
     1. Recommended for vehicles with low dynamics, strong magnetic interference, or hovering that requires static heading
