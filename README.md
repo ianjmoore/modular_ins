@@ -1,5 +1,5 @@
 # Modular INS
-Implementation of an externally aided tactical grade INS with Dual-Antenna GNSS receiver and RTK corrections via a one-shot launch file.
+ROS 2 interface example for an externally aided tactical grade INS with Dual-Antenna GNSS receiver and RTK corrections via a one-shot launch file.
 <br/>
 
 ## Bill of Materials
