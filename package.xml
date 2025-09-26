@@ -14,6 +14,7 @@
 
   <depend>microstrain_inertial_driver</depend>
   <depend>septentrio_gnss_driver</depend>
+  <depend>ntrip_client</depend>
   <depend>rviz2</depend>
   <export>
     <build_type>ament_cmake</build_type>
