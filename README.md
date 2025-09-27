@@ -22,9 +22,9 @@ ROS 2 interface example for an externally aided tactical grade INS with Dual-Ant
 - Linux machine running Ubuntu 22.04 or later
 
 ### Software:
-- [microstrain_inertial](https://github.com/LORD-MicroStrain/microstrain_inertial/tree/ros2) ROS 2 driver
-- [septentrio_gnss_driver](https://github.com/septentrio-gnss/septentrio_gnss_driver) ROS 2 driver
-- [ntrip_client](https://github.com/LORD-MicroStrain/ntrip_client/tree/ros2) ROS 2 driver
+- [microstrain_inertial](https://github.com/LORD-MicroStrain/microstrain_inertial/tree/ros2) 
+- [septentrio_gnss_driver](https://github.com/septentrio-gnss/septentrio_gnss_driver) 
+- [ntrip_client](https://github.com/LORD-MicroStrain/ntrip_client/tree/ros2)
 
 ## Install Instructions
 
@@ -66,10 +66,6 @@ ros2 launch modular_ins mosaic_x5_cv7_ins_mag_heading.py
 
 
 ## Docker Development
-1. Open VS Code
-1. Navigate to your workspace directory
-1. Click blue >< icon in bottom left corner of the window
-1. Click "Reopen in devcontainer"
 
 ### VSCode
 
@@ -80,15 +76,18 @@ The easiest way to develop in docker while still using an IDE is to use VSCode. 
     1. [Docker](https://docs.docker.com/get-docker/)
 1. Open VSCode and install the following [plugins](https://code.visualstudio.com/docs/editor/extension-marketplace):
     1. [VSCode Remote Containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-1. Open this directory in a container:
-    1. Open the `catkin_ws` directory in VSCode
-    1. Click the blue `><` icon in the bottom left corner of the window
-    1. Choose `Reopen In Container`
-    1. If having issues, see [Docker Troubleshooting](#docker-troubleshooting) below
+1. Open `/workspace_dir/src/modular_ins/` directory in VSCode
+1. A prompt should appear, and click "Reopen in devcontainer"
+    1. If not, follow [Docker Troubleshooting](#docker-troubleshooting) below  
 1. Once the project is open in the container, it will take some time to automatically install the rosdeps inside the container
-1. Proceed to [Run Instructions](#Run Instructions)
+1. Proceed to [Run Instructions](#run-instructions)
 
 #### Docker Troubleshooting 
-- If VS Code keeps prompting you to open a devcontainer:
-- Close & reopen VSCode, click File -> Open Folder `modular_ins/`, not `modular_ins_ws/`
-- [If prompted] select `modular_ins/.devcontainer/devcontainer.json` as container settings file
+1. Click the blue `><` icon in the bottom left corner of the window
+    1. Choose `Reopen In Container`
+1. If that does not work or if VS Code keeps prompting you to open a devcontainer:
+1. Close VSCode
+1. In terminal, navigate to `/your_workspace_dir/src/modular_ins/`
+1. `code .`
+1.  & reopen VSCode, click File -> Open Folder `modular_ins/`, not `modular_ins_ws/`
+1. [If prompted] select `modular_ins/.devcontainer/devcontainer.json` as container settings file
