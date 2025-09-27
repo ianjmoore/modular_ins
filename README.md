@@ -80,7 +80,14 @@ The easiest way to develop in docker while still using an IDE is to use VSCode. 
 1. A prompt should appear, and click "Reopen in devcontainer"
     1. If not, follow [Docker Troubleshooting](#docker-troubleshooting) below  
 1. Once the project is open in the container, it will take some time to automatically install the rosdeps inside the container
-1. Proceed to [Run Instructions](#run-instructions)
+1. Build your workspace: 
+```bash
+cd ~/your_workspace
+colcon build
+source ~/your_workspace/install/setup.bash
+```
+>[!TIP] The source command will need to be run in each terminal prior to launching a ROS node.
+7. Proceed to [Run Instructions](#run-instructions)
 
 #### Docker Troubleshooting 
 1. Click the blue `><` icon in the bottom left corner of the window
@@ -88,6 +95,7 @@ The easiest way to develop in docker while still using an IDE is to use VSCode. 
 1. If that does not work or if VS Code keeps prompting you to open a devcontainer:
 1. Close VSCode
 1. In terminal, navigate to `/your_workspace_dir/src/modular_ins/`
-1. `code .`
-1.  & reopen VSCode, click File -> Open Folder `modular_ins/`, not `modular_ins_ws/`
+1. Run `code .`
 1. [If prompted] select `modular_ins/.devcontainer/devcontainer.json` as container settings file
+1. You should be prompted to "Reopen in devcontainer"
+1. If still having troubles, open a ticket on the [MicroStrain Support Portal](https://sensor.support.microstrain.com/servicedesk/customer/portals) or write to [MicroStrainSupport@HBKWorld.com](mailto:MicroStrainSupport@HBKWorld.com)

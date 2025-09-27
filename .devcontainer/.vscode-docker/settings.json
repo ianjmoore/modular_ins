@@ -10,5 +10,5 @@
         "/opt/ros/${env:ROS_DISTRO}/lib/python3.10/site-packages",
     ],
     "editor.tabSize": 2,
-    "cmake.sourceDirectory": "/workspaces/modular_ins_ws/src/src/modular_ins"
+    "cmake.sourceDirectory": "/home/microstrain/catkin_ws/src/modular_ins"
 }
