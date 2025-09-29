@@ -237,7 +237,7 @@ modular_ins/septentrio_gnss:
     # RTK
     rtk_settings:  
       ntrip_1:
-        id: ""
+        id: "NTR1"
         caster: ""
         caster_port: ""
         username: ""
@@ -246,21 +246,21 @@ modular_ins/septentrio_gnss:
         version: "v2"
         tls: false
         fingerprint: ""
-        rtk_standard: "auto"
+        rtk_standard: "RTCMv3"
         send_gga: "auto"
         keep_open: true
-      ip_server_1:
-        id: ""
-        port: 0
-        rtk_standard: "auto"
-        send_gga: "auto"
-        keep_open: true
-      serial_1:
-        port: "/dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if04"
-        baud_rate: 115200
-        rtk_standard: "auto"
-        send_gga: "auto"
-        keep_open: true
+      # ip_server_1:
+      #   id: ""
+      #   port: 0
+      #   rtk_standard: "auto"
+      #   send_gga: "auto"
+      #   keep_open: true
+      # serial_1:
+      #   port: ""
+      #   baud_rate: 115200
+      #   rtk_standard: "auto"
+      #   send_gga: "auto"
+      #   keep_open: true
 
     # Minimum topics required for cv7_ins subscribers:
 
@@ -275,7 +275,7 @@ modular_ins/septentrio_gnss:
       gpst: false
       measepoch: false
       pvtcartesian: false
-      pvtgeodetic: false
+      pvtgeodetic: true
       basevectorcart: false
       basevectorgeod: false
       poscovcartesian: false

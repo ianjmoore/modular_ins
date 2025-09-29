@@ -49,7 +49,7 @@ source ~/your_workspace/install/setup.bash
 #### Launch files
 Two launch files are provided for recommended use for specific applications: 
 
-1. **Dual Antenna** (GPS compass) Heading with Mosaic H to CV7-INS
+1. **Dual Antenna Heading** (GPS compass) with Mosaic H to CV7-INS
     1. Recommended for vehicles with low dynamics, strong magnetic interference, or hovering that requires static heading
         1. Ex: Differential drive wheeled vehicles, VTOL / Quadcopter UAS, QUGV, USV
         NOTE: Dual Antenna Heading not supported on Mosaic X5
@@ -82,9 +82,9 @@ The easiest way to develop in docker while still using an IDE is to use VSCode. 
 1. Once the project is open in the container, it will take some time to automatically install the rosdeps inside the container
 1. Build your workspace: 
 ```bash
-cd ~/your_workspace
+# cd ~/your_workspace #TODO: Check if recommended
 colcon build
-source ~/your_workspace/install/setup.bash
+source install/setup.bash
 ```
 >[!TIP] The source command will need to be run in each terminal prior to launching a ROS node.
 7. Proceed to [Run Instructions](#run-instructions)
