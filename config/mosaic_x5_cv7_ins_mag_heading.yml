@@ -13,6 +13,28 @@ modular_ins/microstrain_inertial_driver:
     reconnect_attempts : 0
     configure_after_reconnect : True
 
+    # Controls if the driver creates a raw binary file
+    #     false - Do not create the file
+    #     true  - Create the file
+    #
+    # Note: The filename will have the following format -
+    #       model_number "_" serial_number "_" datetime (year_month_day_hour_minute_sec) ".bin"
+    #           example: "3DM-GX5-45_6251.00001_20_12_01_01_01_01.bin"
+    # Note: This file is useful for getting support from the manufacturer
+    raw_file_enable : True
+
+    # (GQ7/CV7 only) Controls if the driver requests additional factory support data to be included in the raw data file
+    #     false - Do not request the additional data
+    #     true  - Request the additional channels (please see notes below!)
+    #
+    # Note: We recommend only enabling this feature when specifically requested by Microstrain.
+    #       Including this feature increases communication bandwidth requirements significantly...
+    #       for serial data connections please ensure the baudrate is sufficient for the added data channels.     
+    raw_file_include_support_data : False
+
+    # The directory to store the raw data file
+    raw_file_directory : "/home/microstrain/catkin_ws/src/modular_ins"
+
     # Disable the transform from the mount to frame id transform as it should be handled from a URDF file and robot_description
     publish_mount_to_frame_id_transform : False
 
@@ -58,11 +80,11 @@ modular_ins/microstrain_inertial_driver:
     #         Bit 2 - Magnetometer
     #         Bit 3 - External Heading (first valid external heading will be used to initialize the filter)
     # This sets the heading alignment to use only the external heading. Important to sub to /ext_heading_enu 
-    filter_auto_heading_alignment_selector : 4
+    filter_auto_heading_alignment_selector : 2
 
     # Setup some aiding options.
     filter_enable_gnss_pos_vel_aiding : True
-    filter_enable_magnetometer_aiding     : True
+    filter_enable_magnetometer_aiding : False
 
     # (GQ7/CV7 only) PPS Source
     #  PPS Source =
@@ -81,6 +103,13 @@ modular_ins/microstrain_inertial_driver:
     # NOTE: Must convert from deg to rad!
     filter_declination        : 0.23
 
+    # External GPS Time Update Control
+    # Note: filter_external_gps_time_topic should publish at no more than 1 Hz.
+    # Note: gps_leap_seconds should be updated to reflect the current number of leap seconds.
+    filter_enable_external_gps_time_update : False
+    filter_external_gps_time_topic         : "/external_gps_time"
+    gps_leap_seconds                       : 18.0
+
     # For this use case, we will not publish any IMU data
     imu_data_rate : 0
 
@@ -97,9 +126,15 @@ modular_ins/microstrain_inertial_driver:
     # Also publish the human readable message which can be echoed from the command line
     filter_human_readable_status_data_rate : 1
     filter_llh_position_data_rate          : 50
+    filter_imu_data_rate                   : 50  # Rate of ekf/imu/data topic
+                                            # Note: Both filter_odometry_earth_data_rate and filter_odometry_map_data_rate depend on the contents of this message.
+                                            #       If either are set to a higher value, this message will be published at that rate.
     filter_odometry_earth_data_rate        : 50
     filter_odometry_map_data_rate          : 50
     mip_filter_status_data_rate            : 1  # Rate of mip/filter/status topic
+    mip_filter_gnss_position_aiding_status_data_rate     : 1  # Rate of mip/filter/gnss_aiding_status
+    mip_filter_aiding_measurement_summary_data_rate      : 1  # Rate of mip/filter/aiding_measurement_summary topic
+
 
 
     # Subscribe to external aiding messages.
@@ -151,7 +186,7 @@ modular_ins/septentrio_gnss:
     serial:
       baudrate: 115200
       # rx_serial_port: ttyAMC2
-      rx_serial_port: /dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if04
+      rx_serial_port: /dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if02
       hw_flow_control: "off"
 
 
@@ -214,29 +249,29 @@ modular_ins/septentrio_gnss:
     rtk_settings:  
       ntrip_1:
         id: "NTR1"
-        caster: "rtk.sensorcloud.com"
-        caster_port: "2101"
+        caster: ""
+        caster_port: ""
         username: ""
         password: ""
-        mountpoint: "SCRTK"
+        mountpoint: ""
         version: "v2"
         tls: false
         fingerprint: ""
-        rtk_standard: "auto"
+        rtk_standard: "RTCMv3"
         send_gga: "auto"
         keep_open: true
-      ip_server_1:
-        id: ""
-        port: 0
-        rtk_standard: "auto"
-        send_gga: "auto"
-        keep_open: true
-      serial_1:
-        port: ""
-        baud_rate: 115200
-        rtk_standard: "auto"
-        send_gga: "auto"
-        keep_open: true
+      # ip_server_1:
+      #   id: ""
+      #   port: 0
+      #   rtk_standard: "auto"
+      #   send_gga: "auto"
+      #   keep_open: true
+      # serial_1:
+      #   port: "/dev/serial/by-id/usb-Septentrio_Septentrio_USB_Device_3815305-if02"
+      #   baud_rate: 115200
+      #   rtk_standard: "auto"
+      #   send_gga: "auto"
+      #   keep_open: true
 
     # Minimum topics required for cv7_ins subscribers:
 
@@ -245,13 +280,13 @@ modular_ins/septentrio_gnss:
       auto_publish: false
       publish_only_valid: false
       navsatfix: true
-      gpsfix: true
+      gpsfix: false
       gpgga: false
       gprmc: false
       gpst: false
       measepoch: false
       pvtcartesian: false
-      pvtgeodetic: false
+      pvtgeodetic: true
       basevectorcart: false
       basevectorgeod: false
       poscovcartesian: false
