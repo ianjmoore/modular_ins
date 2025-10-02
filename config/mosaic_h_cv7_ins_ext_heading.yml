@@ -30,7 +30,7 @@ modular_ins/microstrain_inertial_driver:
     # Note: We recommend only enabling this feature when specifically requested by Microstrain.
     #       Including this feature increases communication bandwidth requirements significantly...
     #       for serial data connections please ensure the baudrate is sufficient for the added data channels.     
-    raw_file_include_support_data : False
+    raw_file_include_support_data : True
 
     # The directory to store the raw data file
     raw_file_directory : "/home/microstrain/catkin_ws/src/modular_ins"
@@ -85,6 +85,7 @@ modular_ins/microstrain_inertial_driver:
     # Setup some aiding options.
     filter_enable_gnss_pos_vel_aiding : True
     filter_enable_external_heading_aiding : True
+    filter_enable_magnetometer_aiding : False
 
     # (GQ7/CV7 only) PPS Source
     #  PPS Source =
@@ -223,7 +224,7 @@ modular_ins/septentrio_gnss:
       delta_u: 0.0
 
     att_offset:
-      heading: 0.0
+      heading: 90.0
       pitch: 0.0
       
     ant_type: "Unknown"
