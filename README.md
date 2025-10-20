@@ -52,8 +52,6 @@ Two launch files are provided for recommended use for specific applications:
 1. **Dual Antenna Heading** (GPS compass) with Mosaic H to CV7-INS
     1. Recommended for vehicles with low dynamics, strong magnetic interference, or hovering that requires static heading
         1. Ex: Differential drive wheeled vehicles, VTOL / Quadcopter UAS, QUGV, USV, low jamming & spoofing environments
-        <br/>
-        NOTE: Dual Antenna Heading not supported on Mosaic X5
 ```bash
 ros2 launch modular_ins mosaic_h_cv7_ins_ext_heading.py
 ```
@@ -61,6 +59,8 @@ ros2 launch modular_ins mosaic_h_cv7_ins_ext_heading.py
 2. **Full Band GNSS** with Mosaic X5 + CV7-INS **Magnetometer Heading**
     1. Recommended for highest interference / GNSS denied environments (jamming, spoofing), fixed-wing UAS that do not hover, Ackerman steering geometry vehicles, low magnetic interference 
         1. Ex: Fixed-wing UAS, vehicle in known GNSS contested environment, high-multipath lawn mower, few moving ferro-magnetic moving parts near INS
+        <br/>
+        NOTE: Dual Antenna Heading not supported on Mosaic X5
 ```bash
 ros2 launch modular_ins mosaic_x5_cv7_ins_mag_heading.py
 ```
