@@ -57,7 +57,7 @@ ros2 launch modular_ins mosaic_h_cv7_ins_ext_heading.py
 ```
 
 2. **Full Band GNSS** with Mosaic X5 + CV7-INS **Magnetometer Heading**
-    1. Recommended for highest interference / GNSS denied environments (jamming, spoofing), fixed-wing UAS that do not hover, Ackerman steering geometry vehicles, low magnetic interference 
+    1. Recommended for highest interference / GNSS contested environments (jamming, spoofing), fixed-wing UAS that do not hover, Ackerman steering geometry vehicles, low magnetic interference 
         1. Ex: Fixed-wing UAS, vehicle in known GNSS contested environment, high-multipath lawn mower, few moving ferro-magnetic moving parts near INS
         <br/>
         NOTE: Dual Antenna Heading not supported on Mosaic X5
