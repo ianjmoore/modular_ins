@@ -41,7 +41,8 @@ cd ~/your_workspace
 colcon build
 source ~/your_workspace/install/setup.bash
 ```
->[!TIP] The source command will need to be run in each terminal prior to launching a ROS node.
+>[!TIP]
+>The source command will need to be run in each terminal prior to launching a ROS node.
 
 
 ## Run Instructions
@@ -87,7 +88,8 @@ The easiest way to develop in docker while still using an IDE is to use VSCode. 
 colcon build
 source install/setup.bash
 ```
->[!TIP] The source command will need to be run in each terminal prior to launching a ROS node.
+>[!TIP]
+>The source command will need to be run in each terminal prior to launching a ROS node.
 7. Proceed to [Run Instructions](#run-instructions)
 
 #### Docker Troubleshooting 
