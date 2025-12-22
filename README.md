@@ -14,7 +14,7 @@ ROS 2 interface example for an externally aided tactical grade INS with Dual-Ant
 - Septentrio Mosaic GNSS Receiver - either: 
     - [Mosaic Go heading eval kit](https://www.septentrio.com/en/products/gnss-receivers/gnss-receiver-modules/mosaic-h-evaluation-kit) (Mosaic H receiver)
     - [Mosaic Go X5 eval kit](https://www.septentrio.com/en/products/gnss-receivers/gnss-receiver-modules/mosaic-go-evaluation-kit) (Mosaic X5 receiver)
-- SMA - TNC GNSS connector cable
+- SMA - SMA GNSS connector cable
 - 2x L1/L2 or Full Band GNSS Antennas
 - [SensorCloudRTK](https://rtkapp.sensorcloud.com/) API
 
